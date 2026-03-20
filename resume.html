@@ -3,156 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個人履歷</title>
+<title>個人履歷 - 伊玲世</title>
 
 <style>
-body{
-    margin:0;
-    font-family: "Segoe UI", sans-serif;
-    background:#f3f4f6;
-    color:#333;
-}
+    :root {
+        --primary-text: #333;
+        --secondary-text: #666;
+        --tag-bg: #4b5563; /* 深灰色標籤 */
+        --accent-blue: #5a96d4;
+    }
 
-/* ===== 上方區塊 ===== */
-.hero{
-    background:#e5e7eb;
-    padding:30px 0;
-}
+    body {
+        margin: 0;
+        font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+        background: #fdfdfd;
+        color: var(--primary-text);
+        line-height: 1.6;
+    }
 
-.hero-inner{
-    max-width:1000px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-}
+    /* ===== 上方區塊 (Hero Section) ===== */
+    .hero {
+        position: relative;
+        height: 280px;
+        background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80'); /* 示意背景圖 */
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+    }
 
-/* 頭像 */
-.profile-img{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-right:20px;
-}
+    /* 遮罩，讓文字更清晰 */
+    .hero::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(255, 255, 255, 0.2);
+    }
 
-/* 名字 */
-.name{
-    font-size:28px;
-    font-weight:bold;
-}
+    .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+    }
 
-/* 副標 */
-.subtitle{
-    color:#555;
-    margin:5px 0;
-}
+    /* 頭像與社群圖示 */
+    .profile-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 30px;
+        transform: translateY(40px); /* 讓頭像跨越背景邊界 */
+    }
 
-/* tag */
-.tags{
-    margin-top:10px;
-}
+    .profile-img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid white;
+        object-fit: cover;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        background: #eee;
+    }
 
-.tag{
-    display:inline-block;
-    background:#d1d5db;
-    color:#333;
-    padding:5px 12px;
-    border-radius:20px;
-    font-size:13px;
-    margin-right:8px;
-}
+    .social-icons {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+    }
 
-/* ===== 內容區 ===== */
-.container{
-    max-width:1000px;
-    margin:20px auto;
-    padding:0 20px;
-}
+    .icon-circle {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--accent-blue);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+    }
 
-/* 卡片 */
-.card{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    margin-bottom:15px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
+    /* 名字與標籤內容 */
+    .info-column {
+        flex: 1;
+        padding-top: 50px;
+    }
 
-.section-title{
-    font-weight:bold;
-    margin-bottom:10px;
-}
+    .header-top {
+        display: flex;
+        align-items: baseline;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
 
-/* 列表 */
-ul{
-    margin:0;
-    padding-left:18px;
-}
+    .name {
+        font-size: 32px;
+        font-weight: 700;
+        color: #444;
+    }
 
-/* 聯絡 */
-.contact p{
-    margin:5px 0;
-}
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
 
+    .tag {
+        background: var(--tag-bg);
+        color: white;
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 13px;
+        opacity: 0.85;
+    }
+
+    /* 公司與學校資訊 */
+    .sub-info {
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+    .company-title {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .divider {
+        color: #ccc;
+        margin: 0 8px;
+    }
+
+    .location-exp {
+        font-size: 14px;
+        color: #888;
+        margin-top: 5px;
+    }
+
+    /* ===== 下方內容區 ===== */
+    .container {
+        max-width: 900px;
+        margin: 80px auto 40px;
+        padding: 0 20px;
+    }
+
+    .intro-text {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.8;
+        border-top: 1px solid #eee;
+        padding-top: 25px;
+    }
+
+    .card {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.03);
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #222;
+        border-left: 4px solid var(--accent-blue);
+        padding-left: 12px;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #444;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
 </style>
 </head>
 
 <body>
 
-<!-- 上方 -->
 <div class="hero">
     <div class="hero-inner">
-        <img src="images/tsay.jpg" class="profile-img">
+        <div class="profile-column">
+            <img src="images/tsay.jpg" class="profile-img" alt="Profile">
+            <div class="social-icons">
+                <a href="#" class="icon-circle" style="background:#3b5998">f</a>
+                <a href="#" class="icon-circle" style="background:#333">M</a>
+                <a href="#" class="icon-circle" style="background:#00a0dc">🔗</a>
+            </div>
+        </div>
 
-        <div>
-            <div class="name">王小明</div>
-            <div class="subtitle">亞洲大學 ｜ 學號 AU114001001</div>
-            <div class="subtitle">產品企劃專員（示意）</div>
+        <div class="info-column">
+            <div class="header-top">
+                <div class="name">伊玲世</div>
+                <div class="tags">
+                    <span class="tag">網站經營</span>
+                    <span class="tag">目標管理</span>
+                    <span class="tag">擁抱協作</span>
+                    <span class="tag">數據分析</span>
+                    <span class="tag">跨部門視角與溝通能力</span>
+                    <span class="tag">喜歡思考熱愛旅行</span>
+                </div>
+            </div>
 
-            <div class="tags">
-                <span class="tag">網頁設計</span>
-                <span class="tag">前端開發</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">資料分析</span>
+            <div class="sub-info">
+                <span class="company-title">ABC數位資訊股份有限公司</span>
+                <span class="divider">|</span>
+                <span>產品企劃專員</span>
+            </div>
+
+            <div class="sub-info">
+                <span>國立中央大學</span>
+                <span class="divider">|</span>
+                <span>資訊管理系 大學畢業</span>
+            </div>
+
+            <div class="location-exp">
+                新北市新店區 <span class="divider">|</span> 6~7年工作經歷 <span class="divider">|</span> 希望職稱：PM、產品經理、專案經理
             </div>
         </div>
     </div>
 </div>
 
 <div class="container">
-
-    <div class="card contact">
-        <div class="section-title">聯絡資訊</div>
-        <p>電話：0912-345-678</p>
-        <p>Email：example@email.com</p>
-        <p>LinkedIn：linkedin.com/in/example</p>
+    <div class="intro-text">
+        一直以來都在網路產業工作，是由前端工程師轉換跑道的PM。<br>
+        喜歡思考、分析問題、享受解決問題的過程。<br>
+        期望以專業PM、產品經理為職涯發展目標，幫公司解決問題。
     </div>
 
-    <div class="card">
-        <div class="section-title">技能</div>
-        <ul>
-            <li>HTML / CSS / JavaScript</li>
-            <li>Python / Java</li>
-            <li>React / Node.js</li>
-        </ul>
-    </div>
+    <br><hr style="border:0; border-top:1px solid #eee;"><br>
 
     <div class="card">
-        <div class="section-title">教育背景</div>
+        <div class="section-title">核心技能</div>
         <ul>
-            <li>亞洲大學 資訊工程學系</li>
-            <li>某某高中</li>
+            <li>HTML / CSS / JavaScript (前端開發背景)</li>
+            <li>數據驅動決策 (Python / SQL 基礎)</li>
+            <li>敏捷開發管理 (Scrum / Kanban)</li>
         </ul>
     </div>
 
     <div class="card">
         <div class="section-title">工作經歷</div>
         <ul>
-            <li>軟體開發實習生</li>
-            <li>網頁設計實習生</li>
+            <li><strong>ABC數位資訊</strong> - 產品企劃專員 (現職)</li>
+            <li><strong>某某科技</strong> - 前端工程師</li>
         </ul>
     </div>
-
 </div>
 
 </body>
