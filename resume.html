@@ -3,79 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>個人履歷 - 伊玲世</title>
+<title>個人履歷</title>
 
 <style>
-    /* ===== 修改 Header 區塊 ===== */
-    .hero {
-        position: relative;
-        height: 320px;
-        /* 挑選一張明亮的原野鄉村風格圖片 */
-        background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80'); 
-        background-size: cover;
-        background-position: center 30%;
-        display: flex;
-        align-items: flex-end;
-        overflow: hidden;
+    :root {
+        --accent-blue: #00a0dc;
+        --text-dark: #2d3748;
+        --text-gray: #4a5568;
     }
 
-    /* 增加一個更亮的白色半透明遮罩，解決文字對比問題 */
+    body {
+        margin: 0;
+        font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+        background: #fdfdfd;
+        color: var(--text-dark);
+    }
+
+    /* ===== Header 區塊：原野鄉村風 ===== */
+    .hero {
+        position: relative;
+        height: 350px;
+        /* 使用一張更開闊、色彩輕柔的鄉村草地圖 */
+        background-image: url('https://images.unsplash.com/photo-1441239372925-ac0b51c4c250?auto=format&fit=crop&w=1600&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    /* 漸層遮罩：左側較白確保文字清晰，右側漸透露出風景 */
     .hero::after {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(255, 255, 255, 0.45); /* 提升亮度到 45% 白色 */
-        backdrop-filter: blur(2px); /* 加入微弱的毛玻璃效果，讓背景不干擾文字 */
+        background: linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.4) 60%, rgba(255,255,255,0) 100%);
     }
 
-    /* 確保文字顏色在亮色背景下足夠深 */
+    .hero-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 1000px;
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* 頭像區 */
+    .profile-column {
+        margin-right: 40px;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        object-fit: cover;
+        background: #fff;
+    }
+
+    /* 社群圖示 */
+    .social-icons {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .icon-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        text-decoration: none;
+        transition: transform 0.2s;
+    }
+    .icon-circle:hover { transform: scale(1.1); }
+
+    /* 文字資訊區 */
+    .info-column {
+        flex: 1;
+    }
+
     .name {
-        font-size: 32px;
-        font-weight: 700;
-        color: #2d3748; /* 加深名字顏色 */
-        text-shadow: 0px 0px 10px rgba(255,255,255,0.8); /* 加上白色光暈文字會更清楚 */
+        font-size: 36px;
+        font-weight: bold;
+        color: #1a202c;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
     }
 
-    .sub-info, .location-exp {
-        color: #333; /* 確保副標題文字夠深 */
-        font-weight: 500;
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
     }
 
-    /* 標籤改為更明確的深灰色，增加對比 */
     .tag {
-        background: rgba(50, 50, 50, 0.8); 
-        color: #fff;
-        padding: 4px 14px;
-        border-radius: 20px;
+        background: rgba(45, 55, 72, 0.85); /* 深色玻璃質感 */
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
         font-size: 13px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        backdrop-filter: blur(4px);
     }
 
-    /* ...其餘樣式保持不變... */
+    .sub-info {
+        font-size: 16px;
+        color: var(--text-gray);
+        margin: 4px 0;
+    }
+
+    .divider {
+        color: #cbd5e0;
+        margin: 0 10px;
+    }
+
+    .location-exp {
+        font-size: 14px;
+        color: #718096;
+        margin-top: 10px;
+    }
+
+    /* ===== 下方內容區 ===== */
+    .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .intro-text {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #4a5568;
+        background: #f8fafc;
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 5px solid var(--accent-blue);
+    }
+
+    .card {
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-top: 25px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        border: 1px solid #edf2f7;
+    }
+
+    .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+    }
+    .section-title::before {
+        content: "";
+        width: 4px; height: 20px;
+        background: var(--accent-blue);
+        margin-right: 12px;
+        border-radius: 2px;
+    }
+
+    ul { padding-left: 20px; }
+    li { margin-bottom: 10px; color: #4a5568; }
+
 </style>
-
-<div class="hero">
-    <div class="hero-inner">
-        <div class="profile-column">
-            <img src="images/tsay.jpg" class="profile-img" style="border: 6px solid #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
-            <div class="social-icons">
-                </div>
-        </div>
-
-        <div class="info-column">
-            <div class="header-top">
-                <div class="name">蔡某某</div>
-                <div class="tags">
-                    <span class="tag">網站經營</span>
-                    <span class="tag">目標管理</span>
-                    <span class="tag">擁抱協作</span>
-                    <span class="tag">數據分析</span>
-                    <span class="tag">跨部門視角與溝通能力</span>
-                </div>
-            </div>
-            </div>
-    </div>
-</div>
 </head>
 
 <body>
@@ -92,32 +196,26 @@
         </div>
 
         <div class="info-column">
-            <div class="header-top">
-                <div class="name">蔡某某</div>
-                <div class="tags">
-                    <span class="tag">網站經營</span>
-                    <span class="tag">目標管理</span>
-                    <span class="tag">擁抱協作</span>
-                    <span class="tag">數據分析</span>
-                    <span class="tag">跨部門視角與溝通能力</span>
-                    <span class="tag">喜歡思考熱愛旅行</span>
-                </div>
+            <div class="name">蔡某某</div>
+            <div class="tags">
+                <span class="tag">網站經營</span>
+                <span class="tag">目標管理</span>
+                <span class="tag">擁抱協作</span>
+                <span class="tag">數據分析</span>
+                <span class="tag">跨部門視角與溝通能力</span>
+                <span class="tag">喜歡思考熱愛旅行</span>
             </div>
 
             <div class="sub-info">
-                <span class="company-title">ABC數位資訊股份有限公司</span>
-                <span class="divider">|</span>
-                <span>產品企劃專員</span>
+                <strong>ABC數位資訊股份有限公司</strong> <span class="divider">|</span> 產品企劃專員
             </div>
 
             <div class="sub-info">
-                <span>國立中央大學</span>
-                <span class="divider">|</span>
-                <span>資訊管理系 大學畢業</span>
+                國立中央大學 <span class="divider">|</span> 資訊管理系 大學畢業
             </div>
 
             <div class="location-exp">
-                新北市新店區 <span class="divider">|</span> 6~7年工作經歷 <span class="divider">|</span> 希望職稱：PM、產品經理、專案經理
+                新北市新店區 <span class="divider">|</span> 6~7年工作經歷 <span class="divider">|</span> 希望職稱：PM、產品經理
             </div>
         </div>
     </div>
@@ -129,8 +227,6 @@
         喜歡思考、分析問題、享受解決問題的過程。<br>
         期望以專業PM、產品經理為職涯發展目標，幫公司解決問題。
     </div>
-
-    <br><hr style="border:0; border-top:1px solid #eee;"><br>
 
     <div class="card">
         <div class="section-title">核心技能</div>
