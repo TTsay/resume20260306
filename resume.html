@@ -9,112 +9,105 @@
 body{
     margin:0;
     font-family: "Segoe UI", sans-serif;
-    background:#f5f6fa;
+    background:#f3f4f6;
     color:#333;
 }
 
-/* ===== 上方封面 ===== */
+/* ===== 上方區塊 ===== */
 .hero{
-    background: linear-gradient(120deg,#6a11cb,#2575fc);
-    color:white;
-    padding:40px 20px 80px;
-    position:relative;
+    background:#e5e7eb;
+    padding:30px 0;
+}
+
+.hero-inner{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
 }
 
 /* 頭像 */
-.profile{
-    display:flex;
-    align-items:center;
-    max-width:1000px;
-    margin:auto;
-}
-
-.profile img{
-    width:120px;
-    height:120px;
+.profile-img{
+    width:100px;
+    height:100px;
     border-radius:50%;
-    border:4px solid white;
+    object-fit:cover;
     margin-right:20px;
 }
 
 /* 名字 */
-.profile h1{
-    margin:0;
+.name{
+    font-size:28px;
+    font-weight:bold;
 }
 
-/* 技能標籤 */
+/* 副標 */
+.subtitle{
+    color:#555;
+    margin:5px 0;
+}
+
+/* tag */
 .tags{
     margin-top:10px;
 }
 
 .tag{
     display:inline-block;
-    background:rgba(255,255,255,0.2);
+    background:#d1d5db;
+    color:#333;
     padding:5px 12px;
     border-radius:20px;
-    margin:5px 5px 0 0;
-    font-size:14px;
+    font-size:13px;
+    margin-right:8px;
 }
 
-/* ===== 卡片區塊 ===== */
+/* ===== 內容區 ===== */
 .container{
     max-width:1000px;
-    margin:-50px auto 40px;
+    margin:20px auto;
     padding:0 20px;
 }
 
+/* 卡片 */
 .card{
     background:white;
     padding:20px;
-    margin-bottom:20px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    border-radius:10px;
+    margin-bottom:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
 
 .section-title{
-    font-size:1.3rem;
+    font-weight:bold;
     margin-bottom:10px;
-    color:#2575fc;
 }
 
-/* 清單 */
+/* 列表 */
 ul{
-    padding-left:20px;
+    margin:0;
+    padding-left:18px;
 }
 
-/* 按鈕 */
-button{
-    background:#2575fc;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:6px;
-    cursor:pointer;
+/* 聯絡 */
+.contact p{
+    margin:5px 0;
 }
 
-button:hover{
-    background:#1a5edb;
-}
-
-/* footer */
-footer{
-    text-align:center;
-    padding:15px;
-    color:#777;
-}
 </style>
-
 </head>
 
 <body>
 
-<!-- 上方封面 -->
+<!-- 上方 -->
 <div class="hero">
-    <div class="profile">
-        <img src="images/tsay.jpg" alt="個人照片">
+    <div class="hero-inner">
+        <img src="images/tsay.jpg" class="profile-img">
+
         <div>
-            <h1>王小明</h1>
-            <p>亞洲大學｜學號 AU114001001</p>
+            <div class="name">王小明</div>
+            <div class="subtitle">亞洲大學 ｜ 學號 AU114001001</div>
+            <div class="subtitle">產品企劃專員（示意）</div>
 
             <div class="tags">
                 <span class="tag">網頁設計</span>
@@ -128,60 +121,39 @@ footer{
 
 <div class="container">
 
-    <!-- 個人資料 -->
-    <div class="card">
-        <div class="section-title">個人資料</div>
-        <p><strong>電話:</strong> 0912-345-678</p>
-        <p><strong>Email:</strong> example@email.com</p>
-        <p><strong>LinkedIn:</strong> linkedin.com/in/example</p>
+    <div class="card contact">
+        <div class="section-title">聯絡資訊</div>
+        <p>電話：0912-345-678</p>
+        <p>Email：example@email.com</p>
+        <p>LinkedIn：linkedin.com/in/example</p>
     </div>
 
-    <!-- 技能 -->
     <div class="card">
         <div class="section-title">技能</div>
         <ul>
             <li>HTML / CSS / JavaScript</li>
             <li>Python / Java</li>
             <li>React / Node.js</li>
-            <li>MySQL / MongoDB</li>
         </ul>
     </div>
 
-    <!-- 教育 -->
     <div class="card">
         <div class="section-title">教育背景</div>
         <ul>
-            <li>亞洲大學 資訊工程學系 (2022 - 現在)</li>
-            <li>某某高中 (2019 - 2022)</li>
+            <li>亞洲大學 資訊工程學系</li>
+            <li>某某高中</li>
         </ul>
     </div>
 
-    <!-- 經歷 -->
     <div class="card">
         <div class="section-title">工作經歷</div>
         <ul>
-            <li>軟體開發實習生 - 某科技公司</li>
-            <li>網頁設計實習生 - 另一公司</li>
+            <li>軟體開發實習生</li>
+            <li>網頁設計實習生</li>
         </ul>
     </div>
 
-    <!-- 聯絡 -->
-    <div class="card">
-        <div class="section-title">聯絡我</div>
-        <button onclick="contact()">聯絡我</button>
-    </div>
-
 </div>
-
-<footer>
-© 2026 王小明
-</footer>
-
-<script>
-function contact(){
-    alert("感謝您的聯絡！");
-}
-</script>
 
 </body>
 </html>
